@@ -41,7 +41,7 @@ int buscacamino(int x, int y, vector<vector<pu>>& dp) {
         int r2 = x + dir.first;
         int c2 = y + dir.second;
         // Verificar que r2 y c2 están dentro de los límites antes de acceder a a[r2][c2]
-        if (r2 >= 0 && r2 < a.size() && c2 >= 0 && c2 < a[0].size() && a[r2][c2] == a[x][y] + 1) {
+        if (r2 >= 0 && r2 < a.size() && c2 >= 0 && c2 < a[0].size() && a[r2][c2] == a[x][y] + 1) { // comprobar que el siguiente numero es mayor por 1 
             switch(i){
                 case 0:
                     v1=buscacamino(r2, c2, dp);

@@ -18,7 +18,7 @@ Detalles técnicos:
     Problemas con la definición de direcciones: Inicialmente, el recorrido no esta  definido de forma clara para todas las direcciones posibles, pero el uso de una lista con las direcciones permitió manejar todos los casos. 
 
     Manejo de datos duplicados: debemos asegurarnos de no visitar los mismos nodos múltiples veces, para ello, se usa una tabla hash que prevendrá esta duplicación. 
-
+    
   Estrategia inicial descartada: 
  Se intentó abordar el problema realizando un árbol distinto para cada nodo z… de manera que hubiese tantos árboles como nodos z, pero resulto difícil de implementar . Para ello intenté analizar sobresaltados y sacar una solución a base de estos. Sin embargo, al revisar el problema más a fondo, me di cuenta de que esto no era necesario, ya que no existía una subestructura que pudiera resolverse de forma óptima mediante este enfoque. 
 

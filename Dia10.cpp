@@ -14,21 +14,21 @@ vector<vector<bool>> vis;
 int W, H;
 class pu{
     public:
-    int pt;
-    int id;
+    int pt;//salidas posibles
+    int id;//id del camino
 };
 int buscacamino(int x, int y, vector<vector<pu>>& dp) {
 
-    if (x < 0 || y < 0 || x >= a.size() || y >= a[0].size()) {
+    if (x < 0 || y < 0 || x >= a.size() || y >= a[0].size()) { // se comprueba que no se salga de la matriz
         return 0;
     }
-    if (dp[x][y].pt > 0) {
+    if (dp[x][y].pt > 0) { // si la casilla ya fue visitada
         return dp[x][y].pt;
     }
-    if (a[x][y] == 9) {
+    if (a[x][y] == 9) {// si la casilla es 9 se sumara 1 al camino
         dp[x][y].pt=1;
-        dp[x][y].id= id;
-        id--;
+        dp[x][y].id= id; // cada camino tiene un id diferente
+        id--; 
         cout << id << endl;
         return dp[x][y].pt;
     }
@@ -37,7 +37,7 @@ int buscacamino(int x, int y, vector<vector<pu>>& dp) {
     int id1, id2, id3, id4;
     int v1=0, v2=0, v3=0, v4=0;
     int i=0;
-    for (pair<int, int> dir : dirs) {
+    for (pair<int, int> dir : dirs) { // se recorre en las 4 direcciones
         int r2 = x + dir.first;
         int c2 = y + dir.second;
         // Verificar que r2 y c2 están dentro de los límites antes de acceder a a[r2][c2]
@@ -71,7 +71,7 @@ int buscacamino(int x, int y, vector<vector<pu>>& dp) {
         }
         i++;
     }
-    if( id1==id2 || id1==id3 || id1==id4){
+    if( id1==id2 || id1==id3 || id1==id4){ // comprobamos si son caminos diferentes que se uenen o son el mismo pero dividido
             total-=v1;
         }
         else if( id2==id3 || id2==id4){
@@ -123,7 +123,7 @@ int main() {
     vector<vector<pu>> dp(a.size(), vector<pu>(a[0].size(), {0, 0}));
 
     int total_score = 0;
-    for (int row = 0; row < a.size(); row++) {
+    for (int row = 0; row < a.size(); row++) { // buscamos 0 para iniciar el camino
         for (int col = 0; col < a[0].size(); col++) {
             if (a[row][col] == 0) {
                 total_score += buscacamino(row, col, dp);

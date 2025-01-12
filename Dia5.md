@@ -23,3 +23,10 @@ Dificultades y soluciones:
     Manejo de entradas erróneas: Algunas líneas contienen caracteres incorrectos. Este problema lo resolvimos utilizando assert para validar que solo se procesaran números y delimitadores válidos. 
 
     Validación de ciclos: Para evitar ciclos, se verifican las conexiones de los nodos antes de agregarlos a las aristas, asegurando que no existan relaciones conflictivas. 
+Estrategia inicial descartada: Intentamos usar árboles binarios para gestionar las relaciones entre los nodos. La idea era estructurar los nodos como un árbol, en este el nodo podría tener dos hijos representando los vínculos. Sin embargo, pronto nos dimos cuenta de que este enfoque complicaba innecesariamente el manejo de los datos, ya que no requeríamos una estructura jerárquica, sino más bien una serie de relaciones directas y verificaciones de posibles duplicados. 
+
+Motivo de descarte: Los árboles binarios son útiles para estructuras de datos jerárquicas y operaciones de búsqueda específicas, pero en este caso se necesitaba una solución no jerarquica. El uso de mapas y conjuntos (map y set) facilita la implementación y mejora el rendimiento de la solución sin la sobrecarga de gestionar un árbol binario. 
+
+Estrategia inicial descartada: Intentamos usar árboles binarios para gestionar las relaciones entre los nodos. La idea era estructurar los nodos como un árbol, en este el nodo podría tener dos hijos representando los vínculos. Sin embargo, pronto nos dimos cuenta de que este enfoque complicaba innecesariamente el manejo de los datos, ya que no requeríamos una estructura jerárquica, sino más bien una serie de relaciones directas y verificaciones de posibles duplicados. 
+
+Motivo de descarte: Los árboles binarios son útiles para estructuras de datos jerárquicas y operaciones de búsqueda específicas, pero en este caso se necesitaba una solución no jerarquica. El uso de mapas y conjuntos (map y set) facilita la implementación y mejora el rendimiento de la solución sin la sobrecarga de gestionar un árbol binario. 

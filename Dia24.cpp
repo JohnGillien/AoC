@@ -21,7 +21,7 @@ struct TreeNode {
         this->operation = operation;
         this->left = nullptr;
         this->right = nullptr;
-        this->value = -1;
+        this->value = -1; // Valor inicial inválido
     }
 };
 
@@ -31,9 +31,9 @@ std::string zs = "";
 // Función para evaluar una operación lógica
 int evaluarOperacion(const std::string& operation, int leftValue, int rightValue) {
     if (operation == "AND") {
-        return leftValue & rightValue;
+        return leftValue && rightValue;
     } else if (operation == "OR") {
-        return leftValue | rightValue;
+        return leftValue || rightValue;
     } else if (operation == "XOR") {
         return leftValue ^ rightValue;
     }
@@ -70,27 +70,27 @@ void procesaLinea(std::string linea) {
 }
 
 TreeNode* buscar(std::string id, TreeNode* root) {
-    std::cout << id;
     if(root == nullptr) {
         return nullptr;
     }
     if(root->id == id) {
         return root;
     } else if(root->id > id) {
-        return buscar(id, root->left);
+            return buscar(id, root->left);
     } else {
         return buscar(id, root->right);
     }
 }
 
 void calcularValor(TreeNode* root) {
-    if(root->value == -1/root->id.front() != 'x' || root->id.front() != 'y') {
+    if(root->value == -1) {
         TreeNode* x = buscar(root->op1, raiz);
         TreeNode* y = buscar(root->op2, raiz);
-        calcularValor(x);
-        calcularValor(y);
-        root->value = evaluarOperacion(root->operation, x->value, y->value);
-        std::cout << root->value;
+        if (x != nullptr && y != nullptr) {
+            calcularValor(x);
+            calcularValor(y);
+            root->value = evaluarOperacion(root->operation, x->value, y->value);
+        }
     }
 }
 
@@ -104,11 +104,9 @@ void recorreyCalcula(TreeNode* root) {
 
 void buscarZ(TreeNode* root) {
     if(root != nullptr) {
-        std::cout << "Buscando en nodo: " << root->id << std::endl; //prueba
         buscarZ(root->right);
         if (root->id.front() == 'z' && root->value != -1) { // Asegúrate de que el valor sea válido
             zs += std::to_string(root->value);
-            std::cout << "z: " << root->value; //prueba
         }
         buscarZ(root->left);
     }
